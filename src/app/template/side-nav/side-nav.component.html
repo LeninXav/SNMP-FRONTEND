@@ -1,0 +1,99 @@
+<div class="side-nav" sideBar>
+    <div class="side-nav-inner">
+        <div class="side-nav-logo">
+            <a href="" [routerLink]="['/dashboard']">
+                <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')"></div>
+            </a>
+            <div class="mobile-toggle side-nav-toggle">
+                <a (click)="toggleSideNavCollapse()" href="javascript:void(0);">
+                    <i class="ti-arrow-circle-left"></i>
+                </a>
+            </div>
+        </div>
+        <ul class="side-nav-menu scrollable" [perfectScrollbar]>
+            <li clas="nav-item" routerLinkActive="active">
+                <a class="mrg-top-30" href="" [routerLink]="['/pages/snmpGet']">
+                    <span class="icon-holder">
+                        <i class="ti-share-alt"></i>
+                    </span>
+                    <span class="title">SNMP GET</span>
+                </a>
+            </li>
+            <li clas="nav-item" routerLinkActive="active">
+                <a class="mrg-top-30" href="" [routerLink]="['/pages/snmpSet']">
+                    <span class="icon-holder">
+                        <i class="ti-import"></i>
+                    </span>
+                    <span class="title">SNMP SET</span>
+                </a>
+            </li>
+            <li clas="nav-item" routerLinkActive="active">
+                <a class="mrg-top-30" href="" [routerLink]="['/pages/snmpGetNext']">
+                    <span class="icon-holder">
+                        <i class="ti-share"></i>
+                    </span>
+                    <span class="title">SNMP GET NEXT</span>
+                </a>
+            </li>
+            <li clas="nav-item" routerLinkActive="active">
+                    <a class="mrg-top-30" href="" [routerLink]="['/pages/snmpTrap12']">
+                        <span class="icon-holder">
+                            <i class="ti-desktop"></i>
+                        </span>
+                        <span class="title">TRAP</span>
+                    </a>
+                </li>
+            <!--<li class="nav-item dropdown" >
+                <a class="dropdown-toggle" href="javascript:void(0);" >
+                    <span class="icon-holder">
+                        <i class="ti-desktop"></i>
+                    </span>
+                    <span class="title">TRAP</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="" [routerLink]="['/pages/snmpTrap12']">TRAP V1 Y 2</a>
+                    </li>
+                    <li>
+                        <a href="" [routerLink]="['/pages/snmpTrap3']">TRAP V3</a>
+                    </li>                  
+                </ul>
+            </li> -->
+            <!--<li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="ti-view-list-alt"></i>
+                    </span>
+                    <span class="title">Multi Level</span>
+                    <span class="arrow">
+                        <i class="ti-angle-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0);">
+                            <span>Level 1.2</span>
+                        </a>
+                    </li>	
+                    <li class="nav-item dropdown">
+                        <a href="javascript:void(0);">
+                            <span>Level 1.1</span>
+                            <span class="arrow">
+                                <i class="ti-angle-right"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:void(0);">Level 2</a>
+                            </li>         
+                        </ul>
+                    </li>         
+                </ul>
+            </li>-->
+        </ul>
+    </div>
+</div>

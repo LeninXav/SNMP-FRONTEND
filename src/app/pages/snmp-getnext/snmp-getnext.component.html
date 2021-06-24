@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-heading border bottom">
+                    <h4 class="card-title data-title">SNMP GETNEXT</h4>
+                </div>
+                <div class="card-block">
+                    <div class="mrg-top-20">
+                        <div class="row">
+                            <div class="col-md-8 ml-auto mr-auto">
+                                <form #f="ngForm" ngNativeValidate>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">Versión</label>
+                                                <select class="form-control" [(ngModel)]="snmpMessage.version" id="version" #v (change)="rechargeData(v.value, 1)" name="version"  required>
+                                                    <option value="" selected>SELECCIONE</option>
+                                                  <option *ngFor="let v of version" [value]="v.id">{{v.nombre}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraComunidad">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">Community</label>
+                                                <input [(ngModel)]="snmpMessage.community" name="community" type="text" placeholder="Community" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraTipo">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">Username</label>
+                                                <input [(ngModel)]="snmpMessage.user_name" name="username" type="text" placeholder="Username" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">IP</label>
+                                                <input [(ngModel)]="snmpMessage.ip_addr" name="ip" type="text" placeholder="127.0.0.1" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">MIB</label>
+                                                <input [(ngModel)]="snmpMessage.mib_oid" name="mib" type="text" placeholder="" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraTipo">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">Tipo</label>
+                                                <select  [(ngModel)]="snmpMessage.tipo"  class="form-control" id="tipo" #t (change)="rechargeData(t.value, 2)" name="tipo"  required>
+                                                    <option value="" selected>SELECCIONE</option>
+                                                  <option *ngFor="let t of tipo" [value]="t.id">{{t.nombre}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraPrivacidad">
+                                      <div class="col-md-12">
+                                              <label class="label-title-format">PRIVACIDAD</label>
+                                      </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraPrivacidad">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">PROTOCOLO</label>
+                                                <select  [(ngModel)]="snmpMessage.priv_proto"  class="form-control" id="priv_proto" name="priv_proto"  required>
+                                                    <option value="" selected>SELECCIONE</option>
+                                                  <option *ngFor="let pp of privProtocols" [value]="pp.id">{{pp.nombre}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraPrivacidad">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">CLAVE</label>
+                                                <input [(ngModel)]="snmpMessage.privkey" name="privkey" type="password" placeholder="127.0.0.1" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraAutenticacion">
+                                        <div class="col-md-12">
+                                                <label class="label-title-format">AUTENTICACION</label>
+                                        </div>
+                                      </div>
+                                    <div class="row" *ngIf="muestraAutenticacion">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">PROTOCOLO</label>
+                                                <select  [(ngModel)]="snmpMessage.auth_prot"  class="form-control" id="auth_prot" name="auth_prot"  required>
+                                                    <option value="" selected>SELECCIONE</option>
+                                                  <option *ngFor="let ap of authProtocols" [value]="ap.id">{{ap.nombre}} </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngIf="muestraAutenticacion">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="label-title-format">CLAVE</label>
+                                                <input [(ngModel)]="snmpMessage.authkey" name="authkey" type="password" placeholder="127.0.0.1" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="text-right mrg-top-5">
+                                                <!--<button id="btn-return" (click)="return()" class="btn btn-format">  <img src="assets/images/design/flechabtn.png" class="img-return" />Regresar</button>-->
+                                                <button (click)="sendSNMP(f)" type="submit" [disabled]="!f.form.valid" class="btn btn-format">Enviar</button>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div #dataModal class="modal fade" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="exampledataModalLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title data-title" id="exampledataModalLabel">RESPUESTA</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row animated fadeIn">
+                      <div class="col-sm-12">
+                          <div class="col-md-12 table-format">
+                              <h4 class="modal-title"> SNMP GET NEXT</h4>
+                              <h2>{{mensaje}}</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-format" data-dismiss="modal">Cerrar</button>
+              </div>
+          </div>
+      </div>
+  </div>
